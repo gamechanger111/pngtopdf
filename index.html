@@ -1,0 +1,492 @@
+ <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pro PNG/JPG to PDF Converter</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      font-family: 'Poppins', sans-serif;
+
+      background: linear-gradient(135deg, #141e30, #243b55);
+
+      color: #fff;
+
+      text-align: center;
+
+    }
+
+    header {
+
+      background: rgba(0,0,0,0.6);
+
+      padding: 20px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 10;
+
+    }
+
+    header h1 {
+
+      margin: 0;
+
+      font-size: 1.8rem;
+
+      color: #00c6ff;
+
+    }
+
+    nav a {
+
+      margin: 0 15px;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      transition: color 0.3s ease;
+
+    }
+
+    nav a:hover {
+
+      color: #00c6ff;
+
+    }
+
+    .converter-box {
+
+      background: rgba(255,255,255,0.1);
+
+      backdrop-filter: blur(10px);
+
+      border-radius: 20px;
+
+      padding: 30px;
+
+      max-width: 500px;
+
+      margin: 40px auto;
+
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+
+    }
+
+    .drop-zone {
+
+      border: 2px dashed #00c6ff;
+
+      border-radius: 15px;
+
+      padding: 20px;
+
+      margin-bottom: 15px;
+
+      cursor: pointer;
+
+    }
+
+    input[type="file"] {
+
+      display: none;
+
+    }
+
+    #preview {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+      margin-top: 15px;
+
+      gap: 10px;
+
+    }
+
+    #preview img {
+
+      width: 80px;
+
+      height: 80px;
+
+      object-fit: cover;
+
+      border-radius: 8px;
+
+      border: 2px solid #fff;
+
+    }
+
+    button {
+
+      margin: 10px;
+
+      padding: 12px 25px;
+
+      border: none;
+
+      background: #ff6f61;
+
+      color: white;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+    }
+
+    button:hover {
+
+      background: #e85b50;
+
+      transform: scale(1.05);
+
+    }
+
+    .reviews {
+
+      margin: 40px auto;
+
+      max-width: 800px;
+
+    }
+
+    .review {
+
+      background: rgba(255,255,255,0.1);
+
+      padding: 20px;
+
+      border-radius: 12px;
+
+      margin: 15px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+    }
+
+    .review img {
+
+      width: 60px;
+
+      height: 60px;
+
+      border-radius: 50%;
+
+      border: 2px solid #fff;
+
+    }
+
+    footer {
+
+      margin-top: 40px;
+
+      padding: 20px;
+
+      background: rgba(0,0,0,0.6);
+
+      font-size: 14px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <!-- Header -->
+
+  <header>
+
+    <h1>PNG To PDF Tools</h1>
+
+    <nav>
+
+      <a href="https://www.effectivegatecpm.com/adiea8mx?key=03178ee71fdd32d4932b7b6c42172832">Home</a>
+
+      <a href="https://www.effectivegatecpm.com/adiea8mx?key=03178ee71fdd32d4932b7b6c42172832">About</a>
+
+      <a href="https://www.effectivegatecpm.com/adiea8mx?key=03178ee71fdd32d4932b7b6c42172832">Reviews</a>
+
+      <a href="https://www.effectivegatecpm.com/adiea8mx?key=03178ee71fdd32d4932b7b6c42172832">Contact</a>
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- Converter -->
+
+  <div class="converter-box">
+
+    <h2>📂 PNG/JPG to PDF Converter</h2>
+
+    <p>Upload your images and convert them into a single PDF instantly.</p>
+
+    <div class="drop-zone" id="dropZone">
+
+      <p>Drag & Drop Images Here or Click</p>
+
+      <input type="file" id="fileInput" accept="image/png, image/jpeg" multiple>
+
+    </div>
+
+    <div id="preview"></div>
+
+    <button onclick="convertToPDF()">Convert Now</button>
+
+    <button onclick="window.open('https://www.effectivegatecpm.com/adiea8mx?key=03178ee71fdd32d4932b7b6c42172832','_blank')">More Tools</button>
+
+  </div>
+
+
+
+  <!-- Reviews -->
+
+  <section class="reviews">
+
+    <h2>⭐ User Reviews ⭐</h2>
+
+    <div class="review">
+
+      <img src="https://i.pravatar.cc/60?img=1" alt="User 1">
+
+      <p><b>Ayesha</b>: This tool is super fast and easy to use. Love it! ❤️</p>
+
+    </div>
+
+    <div class="review">
+
+      <img src="https://i.pravatar.cc/60?img=2" alt="User 2">
+
+      <p><b>Ali</b>: Finally a free PNG to PDF converter that actually works. 👌</p>
+
+    </div>
+
+    <div class="review">
+
+      <img src="https://i.pravatar.cc/60?img=3" alt="User 3">
+
+      <p><b>Sara</b>: Very stylish design and smooth conversion process. ⭐⭐⭐⭐⭐</p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Footer -->
+
+  <footer>
+
+    <p>© 2025 PNG To PDF Tools. All Rights Reserved.</p>
+
+  </footer>
+
+
+
+  <script>
+
+    const dropZone = document.getElementById("dropZone");
+
+    const fileInput = document.getElementById("fileInput");
+
+
+    const preview = document.getElementById("preview");
+
+
+
+
+    dropZone.addEventListener("click", () => fileInput.click());
+
+    dropZone.addEventListener("dragover", (e) => {
+
+      e.preventDefault();
+
+      dropZone.style.background = "rgba(0,198,255,0.2)";
+
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+
+      dropZone.style.background = "transparent";
+
+    });
+
+    dropZone.addEventListener("drop", (e) => {
+
+      e.preventDefault();
+
+      dropZone.style.background = "transparent";
+
+      fileInput.files = e.dataTransfer.files;
+
+      showPreview(fileInput.files);
+
+    });
+
+    fileInput.addEventListener("change", () => showPreview(fileInput.files));
+
+
+
+    function showPreview(files) {
+
+      preview.innerHTML = "";
+
+      Array.from(files).forEach(file => {
+
+        const reader = new FileReader();
+
+        reader.onload = e => {
+
+          const img = document.createElement("img");
+
+          img.src = e.target.result;
+
+          preview.appendChild(img);
+
+        };
+
+        reader.readAsDataURL(file);
+
+      });
+
+    }
+
+
+
+    async function convertToPDF() {
+
+      const { jsPDF } = window.jspdf;
+
+      const pdf = new jsPDF();
+
+      const files = fileInput.files;
+
+
+
+      if (files.length === 0) {
+
+        alert("Please select at least one image.");
+
+        return;
+
+      }
+
+
+
+      for (let i = 0; i < files.length; i++) {
+
+        const imgData = await toBase64(files[i]);
+
+        const img = new Image();
+
+        img.src = imgData;
+
+
+
+        await new Promise(resolve => {
+
+          img.onload = function () {
+
+            const pageWidth = pdf.internal.pageSize.getWidth();
+
+            const pageHeight = pdf.internal.pageSize.getHeight();
+
+
+            pdf.addImage(img, "JPEG", 10, 10, pageWidth - 20, pageHeight - 20);
+
+
+
+            if (i < files.length - 1) {
+
+              pdf.addPage();
+
+            }
+
+            resolve();
+
+          };
+
+        });
+
+      }
+
+
+
+      pdf.save("converted.pdf");
+
+
+
+      // Open https://www.effectivegatecpm.com/adiea8mx?key=03178ee71fdd32d4932b7b6c42172832 after conversion
+
+      window.open("https://www.effectivegatecpm.com/adiea8mx?key=03178ee71fdd32d4932b7b6c42172832","_blank");
+
+    }
+
+
+
+    function toBase64(file) {
+
+      return new Promise((resolve, reject) => {
+
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onload = () => resolve(reader.result);
+
+        reader.onerror = error => reject(error);
+
+      });
+
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
